@@ -27,9 +27,26 @@ resizeCanvas();
 var signaturePad = new SignaturePad(canvas, {
   backgroundColor: 'rgb(255, 255, 255)' // necessary for saving image as JPEG; can be removed is only saving as PNG or SVG
 });
+
+
+
+document.getElementById('save-jpeg').addEventListener('click', function () {
+  if (signaturePad.isEmpty()) {
+    return alert("Please provide a signature first.");
+  }
+
+  var data = signaturePad.toDataURL('image/jpeg');
+  console.log(data);
+  $("#img").attr("src",data);
+});
+
+
 document.getElementById('clear').addEventListener('click', function () {
   signaturePad.clear();
 });
+
+// --------------------------------------
+
 $('#click').on('click',function(){
   $("#img").attr("src",convertCanvasToImage(canvas));
 });
