@@ -1,22 +1,7 @@
 // index
 $("#indexForm").validate({
 	submitHandler: function () { submit($("#indexForm").serializeArray()) },
-	onkeyup: function (element, event) {
-		//去除空格
-		var value = this.elementValue(element).replace(/ /g, "");
-		$(element).val(value);
-		// 補上驗證
-		var excludedKeys = [
-			16, 17, 18, 20, 35, 36, 37,
-			38, 39, 40, 45, 144, 225
-		];
-
-		if (event.which === 9 && this.elementValue(element) === "" || $.inArray(event.keyCode, excludedKeys) !== -1) {
-			return;
-		} else if (element.name in this.submitted || element.name in this.invalid) {
-			this.element(element);
-		}
-	},
+	
 	rules: {
 		
 		in1:{required: true},
